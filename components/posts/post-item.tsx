@@ -1,26 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
-import PropTypes, { InferProps } from "prop-types"
 
+import { postItem_propTypes, PostItem_types } from "./posts-resources"
 import classes from "./post-item.module.css"
 
-const proptypes = {
-	// key: PropTypes.string.isRequired,
-	post: PropTypes.objectOf(
-		PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			slug: PropTypes.string.isRequired,
-			title: PropTypes.string.isRequired,
-			image: PropTypes.string.isRequired,
-			excerpt: PropTypes.string.isRequired,
-			date: PropTypes.string.isRequired,
-		}).isRequired
-	).isRequired,
-}
-
-type Props = InferProps<typeof proptypes>
-
-const PostItem = (props: Props) => {
+const PostItem = (props: PostItem_types) => {
 	const { title, image, excerpt, date, slug } = props.post
 
 	const formattedDate = new Date(date).toLocaleDateString("en-US", {
@@ -58,6 +42,6 @@ const PostItem = (props: Props) => {
 	)
 }
 
-PostItem.propTypes = proptypes
+PostItem.propTypes = postItem_propTypes
 
 export default PostItem
