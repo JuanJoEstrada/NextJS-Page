@@ -5,6 +5,7 @@ import Hero from "../components/home/hero"
 
 const DUMMY_POSTS = [
 	{
+		id: 1,
 		slug: "getting-started-with-nextjs",
 		title: "Getting Started with NextJS",
 		image: "getting-started-nextjs.png",
@@ -13,6 +14,7 @@ const DUMMY_POSTS = [
 		date: "2022-02-10",
 	},
 	{
+		id: 2,
 		slug: "getting-started-with-nextjs2",
 		title: "Getting Started with NextJS",
 		image: "getting-started-nextjs.png",
@@ -21,6 +23,7 @@ const DUMMY_POSTS = [
 		date: "2022-02-10",
 	},
 	{
+		id: 3,
 		slug: "getting-started-with-nextjs3",
 		title: "Getting Started with NextJS",
 		image: "getting-started-nextjs.png",
@@ -29,6 +32,7 @@ const DUMMY_POSTS = [
 		date: "2022-02-10",
 	},
 	{
+		id: 4,
 		slug: "getting-started-with-nextjs4",
 		title: "Getting Started with NextJS",
 		image: "getting-started-nextjs.png",

@@ -7,11 +7,12 @@ const proptypes = {
 	posts: PropTypes.arrayOf(
 		PropTypes.objectOf(
 			PropTypes.shape({
-				slug: PropTypes.string,
-				title: PropTypes.string,
-				image: PropTypes.string,
-				excerpt: PropTypes.string,
-				date: PropTypes.string,
+				id: PropTypes.number.isRequired,
+				slug: PropTypes.string.isRequired,
+				title: PropTypes.string.isRequired,
+				image: PropTypes.string.isRequired,
+				excerpt: PropTypes.string.isRequired,
+				date: PropTypes.string.isRequired,
 			}).isRequired
 		).isRequired
 	).isRequired,
@@ -28,6 +29,6 @@ const FeaturedPosts = (props: Props) => {
 	)
 }
 
-FeaturedPosts.proptypes = proptypes
+FeaturedPosts.propTypes = proptypes
 
 export default FeaturedPosts

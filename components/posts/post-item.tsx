@@ -5,13 +5,15 @@ import PropTypes, { InferProps } from "prop-types"
 import classes from "./post-item.module.css"
 
 const proptypes = {
+	// key: PropTypes.string.isRequired,
 	post: PropTypes.objectOf(
 		PropTypes.shape({
-			slug: PropTypes.string,
-			title: PropTypes.string,
-			image: PropTypes.string,
-			excerpt: PropTypes.string,
-			date: PropTypes.string,
+			id: PropTypes.number.isRequired,
+			slug: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			image: PropTypes.string.isRequired,
+			excerpt: PropTypes.string.isRequired,
+			date: PropTypes.string.isRequired,
 		}).isRequired
 	).isRequired,
 }
@@ -56,6 +58,6 @@ const PostItem = (props: Props) => {
 	)
 }
 
-PostItem.proptypes = proptypes
+PostItem.propTypes = proptypes
 
 export default PostItem
