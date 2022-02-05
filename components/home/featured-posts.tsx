@@ -1,8 +1,8 @@
-import { proptypesPosts, Posts } from "./home-resources"
+import { propTypes, Props } from "./home-resources"
 import PostsGrid from "../posts/posts-grid"
 import classes from "./featured-posts.module.css"
 
-const FeaturedPosts = (props: Posts) => {
+const FeaturedPosts = (props: Props) => {
 	return (
 		<section className={classes.latest}>
 			<h2>Featured Posts</h2>
@@ -11,6 +11,6 @@ const FeaturedPosts = (props: Posts) => {
 	)
 }
 
-FeaturedPosts.propTypes = proptypesPosts
+FeaturedPosts.propTypes = propTypes
 
 export default FeaturedPosts

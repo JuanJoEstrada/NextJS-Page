@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"
+import PropTypes, { InferProps } from "prop-types"
 
-export const proptypesPosts = {
+export const propTypes = {
 	posts: PropTypes.arrayOf(
 		PropTypes.shape({
 			slug: PropTypes.string.isRequired,
@@ -12,12 +12,4 @@ export const proptypesPosts = {
 	).isRequired,
 }
 
-export interface Posts {
-	posts: {
-		slug: string
-		title: string
-		image: string
-		excerpt: string
-		date: string
-	}[]
-}
+export type Props = InferProps<typeof propTypes>

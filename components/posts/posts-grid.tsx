@@ -1,8 +1,8 @@
-import { proptypesPosts, Posts } from "../home/home-resources"
+import { propTypes, Props } from "../home/home-resources"
 import PostItem from "./post-item"
 import classes from "./posts-grid.module.css"
 
-const PostsGrid = (props: Posts) => {
+const PostsGrid = (props: Props) => {
 	const { posts } = props
 
 	return (
@@ -14,6 +14,6 @@ const PostsGrid = (props: Posts) => {
 	)
 }
 
-PostsGrid.propTypes = proptypesPosts
+PostsGrid.propTypes = propTypes
 
 export default PostsGrid
