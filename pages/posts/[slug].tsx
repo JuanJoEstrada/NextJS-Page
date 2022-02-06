@@ -1,11 +1,7 @@
 import { NextPage } from "next"
-
-const PostPage: NextPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+import PostContent from "../../components/posts/post-detail/post-content"
+const PostDetailPage: NextPage = () => {
+	return <PostContent />
 }
 
-export default PostPage
+export default PostDetailPage
