@@ -1,20 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import PropTypes, { InferProps } from "prop-types"
 
+import { Props, propTypes } from "./post-resources"
 import classes from "./post-item.module.css"
-
-const propTypes = {
-	post: PropTypes.shape({
-		slug: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired,
-		image: PropTypes.string.isRequired,
-		excerpt: PropTypes.string.isRequired,
-		date: PropTypes.string.isRequired,
-	}).isRequired,
-}
-
-type Props = InferProps<typeof propTypes>
 
 const PostItem = (props: Props) => {
 	const { title, image, excerpt, date, slug } = props.post
@@ -38,7 +26,7 @@ const PostItem = (props: Props) => {
 							alt={title}
 							width={300}
 							height={200}
-							layout="responsive"
+							layout='responsive'
 						/>
 					</div>
 					<div className={classes.content}>

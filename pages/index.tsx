@@ -1,11 +1,10 @@
-import type { NextPage, GetStaticProps } from "next"
+import type { InferGetStaticPropsType } from "next"
 
 import FeaturedPosts from "../components/home/featured-posts"
 import Hero from "../components/home/hero"
 import { getFeaturedPosts } from "../lib/posts-util"
-import { Props } from "../components/home/home-resources";
 
-const Home: NextPage = ({posts}) => {
+const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<>
 			<Hero />
@@ -14,7 +13,7 @@ const Home: NextPage = ({posts}) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
 	const featuredPosts = getFeaturedPosts()
 
 	return {

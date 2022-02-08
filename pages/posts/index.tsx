@@ -1,10 +1,11 @@
-import { NextPage } from "next"
+import type { InferGetStaticPropsType } from "next"
 import AllPosts from "../../components/posts/all-posts"
 import { getAllPosts } from "../../lib/posts-util"
 
-
-const AllPostsPage: NextPage = (props) => {
-	return <AllPosts posts={props.posts} />
+const AllPostsPage = ({
+	posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+	return <AllPosts posts={posts} />
 }
 
 export const getStaticProps = async () => {
@@ -12,8 +13,8 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
-			posts: allPosts
-		}
+			posts: allPosts,
+		},
 	}
 }
 

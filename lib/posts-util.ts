@@ -2,13 +2,14 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 
-interface Data {
-	[key: string]: string
-}
-
-interface PostData extends Data {
-	slug: string
+interface PostData {
 	content: string
+	slug: string
+	title: string
+	date: string
+	image: string
+	excerpt: string
+	isFeatured: boolean
 }
 
 const postsDirectory = path.join(process.cwd(), "posts")
@@ -16,18 +17,20 @@ const postsDirectory = path.join(process.cwd(), "posts")
 const getPostData = (fileName: string) => {
 	const filePath = path.join(postsDirectory, fileName)
 	const fileContent = fs.readFileSync(filePath, "utf-8")
-	const { content } = matter(fileContent)
-	const data: Data = matter(fileContent).data
-
-	console.log("data:", data)
+	const { data, content } = matter(fileContent)
 
 	// Remove the file extansion
 	const postSlug = fileName.replace(/\.md$/, "")
 
 	const postData: PostData = {
-		slug: postSlug,
-		...data,
 		content,
+		slug: postSlug,
+		// ...data,
+		title: data.title,
+		date: data.date,
+		image: data.image,
+		excerpt: data.excerpt,
+		isFeatured: data.isFeatured,
 	}
 
 	return postData
@@ -35,8 +38,6 @@ const getPostData = (fileName: string) => {
 
 export const getAllPosts = () => {
 	const postFiles = fs.readdirSync(postsDirectory)
-
-	console.log("postFiles:", postFiles)
 
 	const allPosts = postFiles.map((postFile) => {
 		return getPostData(postFile)

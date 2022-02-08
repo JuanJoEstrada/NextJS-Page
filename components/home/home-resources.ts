@@ -8,6 +8,8 @@ export const propTypes = {
 			image: PropTypes.string.isRequired,
 			excerpt: PropTypes.string.isRequired,
 			date: PropTypes.string.isRequired,
+			isFeatured: PropTypes.bool.isRequired,
+			content: PropTypes.string.isRequired,
 		}).isRequired
 	).isRequired,
 }
