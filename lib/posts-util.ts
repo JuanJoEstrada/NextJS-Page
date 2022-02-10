@@ -14,13 +14,14 @@ interface PostData {
 
 const postsDirectory = path.join(process.cwd(), "posts")
 
-const getPostData = (fileName: string) => {
-	const filePath = path.join(postsDirectory, fileName)
+export const getPostFiles = () => fs.readdirSync(postsDirectory)
+
+export const getPostData = (postIdentifier: string) => {
+	// Remove the file extansion
+	const postSlug = postIdentifier.replace(/\.md$/, "")
+	const filePath = path.join(postsDirectory, `${postSlug}.md`)
 	const fileContent = fs.readFileSync(filePath, "utf-8")
 	const { data, content } = matter(fileContent)
-
-	// Remove the file extansion
-	const postSlug = fileName.replace(/\.md$/, "")
 
 	const postData: PostData = {
 		content,
@@ -37,7 +38,7 @@ const getPostData = (fileName: string) => {
 }
 
 export const getAllPosts = () => {
-	const postFiles = fs.readdirSync(postsDirectory)
+	const postFiles = getPostFiles()
 
 	const allPosts = postFiles.map((postFile) => {
 		return getPostData(postFile)
