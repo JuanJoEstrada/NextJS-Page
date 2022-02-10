@@ -41,18 +41,20 @@ const postContent = ({ post }: Props) => {
 			return <p>{paragraph.children}</p>
 		},
 
-		code(code) {
+		code(code: any) {
 			const { className, children } = code
 			const language = className.split("-")[1] // className is something like language-js => We need the "js" part here
 			return (
 				<SyntaxHighlighter
 					style={atomDark}
 					language={language}
+					// eslint-disable-next-line react/no-children-prop
 					children={children}
 				/>
 			)
 		},
 	}
+	// @types/react-syntax-highlighter
 
 	return (
 		<article className={classes.content}>
@@ -62,6 +64,6 @@ const postContent = ({ post }: Props) => {
 	)
 }
 
-// postContent.propTypes = propTypes
+postContent.propTypes = propTypes
 
 export default postContent
