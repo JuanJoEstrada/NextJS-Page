@@ -3,13 +3,17 @@ import { InferGetStaticPropsType } from "next"
 import PostContent from "../../components/posts/post-detail/post-content"
 import { getPostData, getPostFiles } from "../../lib/posts-util"
 
-const PostDetailPage = (
-	props: InferGetStaticPropsType<typeof getStaticProps>
-) => {
-	return <PostContent post={props.post} />
+interface Context {
+	params: { slug: string }
 }
 
-export const getStaticProps = (context: { params: { slug: string } }) => {
+const PostDetailPage = ({
+	post,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+	return <PostContent post={post} />
+}
+
+export const getStaticProps = async (context: Context) => {
 	const { params } = context
 	const { slug } = params
 	const postData = getPostData(slug)
@@ -23,7 +27,7 @@ export const getStaticProps = (context: { params: { slug: string } }) => {
 	}
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
 	const postFileNames = getPostFiles()
 	const slugs = postFileNames.map((fileName) => fileName.replace(/\.md$/, ""))
 	const paths = slugs.map((slug) => ({ params: { slug } }))
