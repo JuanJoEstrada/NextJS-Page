@@ -1,11 +1,8 @@
 import { NextPage } from "next"
+import ContactForm from "../../components/contact/contactForm"
 
 const ContactPage: NextPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+	return <ContactForm />
 }
 
 export default ContactPage
