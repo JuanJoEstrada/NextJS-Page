@@ -1,4 +1,3 @@
-import { InferGetStaticPropsType } from "next"
 import Head from "next/head"
 
 import PostContent from "../../components/posts/post-detail/post-content"
@@ -8,9 +7,19 @@ interface Context {
 	params: { slug: string }
 }
 
-const PostDetailPage = ({
-	post,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+interface Post {
+	post: {
+		content: string
+		slug: string
+		title: string
+		date: string
+		image: string
+		excerpt: string
+		isFeatured: boolean
+	}
+}
+
+const PostDetailPage = ({ post }: Post) => {
 	return (
 		<>
 			<Head>

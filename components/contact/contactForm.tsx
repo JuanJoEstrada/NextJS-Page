@@ -2,7 +2,13 @@ import { useState, useEffect } from "react"
 import classes from "./contact-form.module.css"
 import Notification from "../ui/notification"
 
-const sendContactData = async (contactDetails) => {
+interface ContactDetails {
+	email: string
+	name: string
+	message: string
+}
+
+const sendContactData = async (contactDetails: ContactDetails) => {
 	const response = await fetch("/api/contact", {
 		method: "POST",
 		body: JSON.stringify(contactDetails),
@@ -53,7 +59,7 @@ const ContactForm = () => {
 			setEnteredEmail("")
 			setEnteredMessage("")
 			setEnteredName("")
-		} catch (error) {
+		} catch (error: any) {
 			setRequestError(error.message)
 			setRequestStatus("error")
 		}

@@ -9,7 +9,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<>
 			<Head>
-				<title>Juan' Blog</title>
+				<title>Juan&apos; Blog</title>
 				<meta
 					name='description'
 					content='I post about programming and web development.'

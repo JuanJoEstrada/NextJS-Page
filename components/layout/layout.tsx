@@ -1,6 +1,11 @@
+import { ReactChild, ReactFragment, ReactPortal } from "react"
 import MainNavigation from "./main-navigation"
 
-const Layout = (props) => {
+interface Props {
+	children: ReactChild | ReactFragment | ReactPortal
+}
+
+const Layout = (props: Props) => {
 	return (
 		<>
 			<MainNavigation />
