@@ -22,6 +22,7 @@ export const getServerSideProps = async (context: { req: any }) => {
 
 	return {
 		props: {
+			// For _app.tsx
 			session,
 		},
 	}
