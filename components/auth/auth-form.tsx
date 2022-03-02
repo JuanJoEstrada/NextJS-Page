@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { signIn } from "next-auth/client"
 import classes from "./auth-form.module.css"
 
 const createUser = async (email: string, password: string) => {
@@ -23,9 +24,6 @@ const AuthForm = () => {
 	const [passwordInput, setPasswordInput] = useState("")
 	const [isLogin, setIsLogin] = useState(true)
 
-	console.log("emailInputRef:", emailInput)
-	console.log("passwordInputRef:", passwordInput)
-
 	const switchAuthModeHandler = () => {
 		setIsLogin((prevState) => !prevState)
 	}
@@ -33,11 +31,15 @@ const AuthForm = () => {
 	const submitHandler = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		if (isLogin) {
-			// log user in
+			const result = await signIn("credentials", {
+				redirect: false,
+				email: emailInput,
+				password: passwordInput,
+			})
+			console.log("result:", result)
 		} else {
 			try {
 				const result = await createUser(emailInput, passwordInput)
-				console.log("User create:", result)
 			} catch (error) {
 				console.log("Error creating user:", error)
 			}
