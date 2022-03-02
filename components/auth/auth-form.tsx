@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { signIn } from "next-auth/client"
+import { useRouter } from "next/router"
+
 import classes from "./auth-form.module.css"
 
 const createUser = async (email: string, password: string) => {
@@ -24,6 +26,8 @@ const AuthForm = () => {
 	const [passwordInput, setPasswordInput] = useState("")
 	const [isLogin, setIsLogin] = useState(true)
 
+	const router = useRouter()
+
 	const switchAuthModeHandler = () => {
 		setIsLogin((prevState) => !prevState)
 	}
@@ -36,7 +40,9 @@ const AuthForm = () => {
 				email: emailInput,
 				password: passwordInput,
 			})
-			console.log("result:", result)
+			if (!result?.error) {
+				router.replace("/profile")
+			}
 		} else {
 			try {
 				const result = await createUser(emailInput, passwordInput)
